@@ -76,3 +76,16 @@ const valide = {...saisie}
 valide.pH =versNombre(saisie.pH)
 return valide
 }
+
+// Ajoute la saisie au carnet si elle est valide (verifierObservation, puis creerObservation).
+// Renvoie les erreurs : [] si l'observation a été ajoutée ; sinon les messages, et rien n'est ajouté.
+export function ajouterObservation(observations, saisie) {
+  const erreurs = verifierObservation(saisie,observations)
+  if(erreurs.length>0){
+    return erreurs
+  }
+
+  const open = creerObservation(saisie) 
+  observations.push(open)
+  return[]
+}
