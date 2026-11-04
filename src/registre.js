@@ -38,16 +38,33 @@ export function trouverParId(observations, id) {
 // · texture présente dans TEXTURES · pH nombre entre 0 et 14 (bornes comprises)
 // · etatHumidite présent dans HUMIDITES. N'ajoutez aucune autre règle que celles-ci.
 export function verifierObservation(saisie, observations) {
-  throw new Error('TODO : coder verifierObservation dans src/registre.js');
-}
+  //throw new Error('TODO : coder verifierObservation dans src/registre.js');
+  const erreur = []
+  if (!saisie.id){
+    erreur.push("identifiant obligatoire")
+  }else{
+    for(const verifierid of observations){
+      if (verifierid.id === saisie.id){
+        erreur.push("identifiant existant")
+      }
+    }
+  }
 
-// Fabrique l'observation à enregistrer à partir d'une saisie VALIDE : pH devient un nombre.
-export function creerObservation(saisie) {
-  throw new Error('TODO : coder creerObservation dans src/registre.js');
-}
+  if(!saisie.parcelle){
+    erreur.push("parcelle obligatoire")
+  }
 
-// Ajoute la saisie au carnet si elle est valide (verifierObservation, puis creerObservation).
-// Renvoie les erreurs : [] si l'observation a été ajoutée ; sinon les messages, et rien n'est ajouté.
-export function ajouterObservation(observations, saisie) {
-  throw new Error('TODO : coder ajouterObservation dans src/registre.js');
+  const pH = versNombre(saisie.pH)
+  if(pH<0||pH>14||isNaN(pH)||saisie.pH===""){
+    erreur.push("Entrer un pH vide compris en 0 et 14")
+  }
+
+  if(!HUMIDITES.includes(saisie.etatHumidite)){
+    erreur.push("validé")
+  }
+
+  if(!TEXTURES.includes(saisie.texture)){
+    erreur.push("validé")
+  }
+  return erreur
 }
