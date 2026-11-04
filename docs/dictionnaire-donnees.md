@@ -4,11 +4,11 @@
 
 | Champ | Signification | Type | Règle de validation | Unité | Exemple |
 | --- | --- | --- | --- | --- | --- |
-| `id` | Identifiant unique | texte | non vide, absent des données | — | ✏️ |
-| ✏️ | | | | | |
-| ✏️ | | | | | |
-| ✏️ | | | | | |
-| ✏️ | | | | | |
+| `id` | Identifiant unique | texte | non vide, absent des données | — |
+| Parcelle | | | | | |
+| Texture | | | | | |
+| pH | | | | | |
+| Etat d'humidité | | | | | |
 
 **Listes de valeurs autorisées** : ✏️
 
