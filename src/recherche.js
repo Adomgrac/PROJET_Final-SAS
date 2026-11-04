@@ -8,5 +8,12 @@ export function filtrerParParcelle(observations, parcelle) {
   return observations.filter(observation => observation.parcelle===parcelle)
 }
 
+// Renvoie un NOUVEAU tableau avec les observations de cette texture (éventuellement vide).
+export function filtrerParTexture(observations, texture) {
+  //throw new Error('TODO : coder filtrerParTexture dans src/recherche.js');
+  const observationtexture =[]
+  return observations.filter(observation=>observation.texture===texture)
+}
+
 
 
