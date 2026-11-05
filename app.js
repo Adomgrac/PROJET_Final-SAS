@@ -41,18 +41,15 @@ async function ajouter(observations) {
   const etatHumidite = await demander(`État d'humidité (${HUMIDITES.join(', ')}) : `);
   if (etatHumidite === null) return;
 
-
-}
-
-// Normalisation de l'écriture
+  // Normalisation de l'écriture
   const saisie = {
-    id: id.toUpperCase(),
-    parcelle: parcelle.toUpperCase(),
-    texture: TEXTURES.toLowerCase(),
+    id: id.trim().toUpperCase(),
+    parcelle: parcelle.trim().toUpperCase(),
+    texture: texture.trim().toLowerCase(),
     pH,
-    etatHumidite: etatHumidite.toLowerCase(),
+    etatHumidite: etatHumidite.trim().toLowerCase(),
   };
-  
+
   const erreurs = ajouterObservation(observations, saisie);
   if (erreurs.length > 0) {
     console.log('Observation refusée :');
@@ -65,8 +62,9 @@ async function ajouter(observations) {
 
   await enregistrerJson(FICHIER_DONNEES, observations);
   console.log(`Observation ${saisie.id} ajoutée. Le carnet compte ${observations.length} observation(s).`);
+}
 
-  // pour le choix 2 (lister)
+// pour le choix 2 (lister)
 function lister(observations) {
   console.log(`--- Liste des observations (${observations.length}) ---`);
   console.log(listerObservations(observations));
@@ -211,5 +209,3 @@ async function main() {
 }
 
 main();
-
-
