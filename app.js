@@ -66,3 +66,9 @@ async function ajouter(observations) {
   await enregistrerJson(FICHIER_DONNEES, observations);
   console.log(`Observation ${saisie.id} ajoutée. Le carnet compte ${observations.length} observation(s).`);
 
+  // pour le choix 2 (lister)
+function lister(observations) {
+  console.log(`--- Liste des observations (${observations.length}) ---`);
+  console.log(listerObservations(observations));
+}
+
