@@ -15,4 +15,5 @@ export function listerObservations(observations) {
 2. **Une difficulté, et sa solution** :  un test rouge à cause d'une erreur des espaces , des acsents , un code ou un texte mal saisie , une fonction mal utilisée.
 Rechercher les erreurs avec calme et les corrigées au fir et à mesure.
 
+
 3. **L'entraide** (qui m'a aidé, qui j'ai aidé, sur quoi) : Djongon junior, j'ai aidé Manh dans l'explication d'un codage (Renvoie une ligne de texte qui décrit l'observation.)
