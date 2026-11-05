@@ -43,3 +43,14 @@ async function ajouter(observations) {
 
 
 }
+
+// Normalisation de l'écriture
+  const saisie = {
+    id: id.toUpperCase(),
+    parcelle: parcelle.toUpperCase(),
+    texture: texture.toLowerCase(),
+    pH,
+    etatHumidite: etatHumidite.toLowerCase(),
+  };
+
+  
