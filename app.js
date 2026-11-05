@@ -26,4 +26,20 @@ function afficherLeMenu() {
   console.log('0. Quitter');
 }
 
+// Choix 1 : Ajouter une observation
+async function ajouter(observations) {
+  console.log('--- Ajouter une observation ---');
 
+  const id = await demander('Point observé (ex. S11) : ');
+  if (id === null) return;
+  const parcelle = await demander('Parcelle (ex. P1) : ');
+  if (parcelle === null) return;
+  const texture = await demander(`Texture (${TEXTURES.join(', ')}) : `);
+  if (texture === null) return;
+  const pH = await demander('pH (nombre de 0 à 14, sans unité, virgule acceptée) : ');
+  if (pH === null) return;
+  const etatHumidite = await demander(`État d'humidité (${HUMIDITES.join(', ')}) : `);
+  if (etatHumidite === null) return;
+
+
+}
