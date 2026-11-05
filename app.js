@@ -53,4 +53,16 @@ async function ajouter(observations) {
     etatHumidite: etatHumidite.toLowerCase(),
   };
 
-  
+  const erreurs = ajouterObservation(observations, saisie);
+  if (erreurs.length > 0) {
+    console.log('Observation refusée :');
+    for (const erreur of erreurs) {
+      console.log(`  - ${erreur}`);
+    }
+    console.log(`Le carnet compte toujours ${observations.length} observation(s).`);
+    return;
+  }
+
+  await enregistrerJson(FICHIER_DONNEES, observations);
+  console.log(`Observation ${saisie.id} ajoutée. Le carnet compte ${observations.length} observation(s).`);
+
