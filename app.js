@@ -113,3 +113,16 @@ async function rechercher(observations) {
   }
 }
 
+// Pour le Choix 4 : trier par pH
+async function trier(observations) {
+  console.log('--- Trier ---');
+  console.log('1. Par pH croissant');
+  const sousChoix = await demander('Votre choix : ');
+  if (sousChoix === null) return;
+
+  if (sousChoix.trim() === '1') {
+    console.log(listerObservations(trierParPh(observations)));
+  } else {
+    console.log('Choix inconnu : retour au menu.');
+  }
+}
