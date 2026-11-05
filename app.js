@@ -153,4 +153,63 @@ function synthese(observations) {
   console.log("Rappels : le pH est sans unité. Aucune moyenne de pH n'est calculée (échelle logarithmique).");
   console.log("Ces points ne sont pas un diagnostic de fertilisation : ils servent à préparer l'échange avec le coach.");
 }
+ 
+// C'est la fonction qui va permettre de lancer l'application
+async function main() {
+  ouvrirSaisie();
+  try {
+    accueil();
+
+    // Chargement des données
+    let observations;
+    try {
+      observations = await chargerJson(FICHIER_DONNEES);
+    } catch (erreur) {
+      console.log(`Impossible de charger ${FICHIER_DONNEES} : ${erreur.message}`);
+      return;
+    }
+
+    // Boucle du menu : affiché avant chaque choix
+    let continuer = true;
+    while (continuer) {
+      afficherLeMenu();
+      const choix = await demander('Votre choix : ');
+      if (choix === null) break; // fin de la saisie (Ctrl+D)
+
+      try {
+        switch (choix.trim()) {
+          case '1':
+            await ajouter(observations);
+            break;
+          case '2':
+            lister(observations);
+            break;
+          case '3':
+            await rechercher(observations);
+            break;
+          case '4':
+            await trier(observations);
+            break;
+          case '5':
+            synthese(observations);
+            break;
+          case '0':
+            continuer = false;
+            break;
+          default:
+            console.log('Choix inconnu : tapez un nombre du menu.');
+        }
+      } catch (erreur) {
+        console.log(`Une erreur est survenue : ${erreur.message}`);
+      }
+    }
+
+    console.log('Au revoir !');
+  } finally {
+    fermerSaisie();
+  }
+}
+
+main();
+
 
