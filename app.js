@@ -48,11 +48,11 @@ async function ajouter(observations) {
   const saisie = {
     id: id.toUpperCase(),
     parcelle: parcelle.toUpperCase(),
-    texture: texture.toLowerCase(),
+    texture: TEXTURES.toLowerCase(),
     pH,
     etatHumidite: etatHumidite.toLowerCase(),
   };
-
+  
   const erreurs = ajouterObservation(observations, saisie);
   if (erreurs.length > 0) {
     console.log('Observation refusée :');
